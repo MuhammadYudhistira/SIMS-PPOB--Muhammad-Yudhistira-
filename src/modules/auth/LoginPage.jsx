@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { FaAt, FaLock } from 'react-icons/fa6';
 import { IoPersonOutline } from 'react-icons/io5';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUser, user } from './authSlice';
 
 const LoginPage = () => {
 
@@ -14,6 +16,19 @@ const LoginPage = () => {
 
   const isLogin = type === 'login';
 
+  // const getUser = useSelector(user)
+  // const dispatch = useDispatch()
+
+  // useEffect(() => {
+  //   dispatch(setUser({
+  //     email: 'yudhis@gmail.com',
+  //     first_name: 'yudhistira',
+  //     last_name: 'Muhammad',
+  //     profile_image: '123',
+  //   }))
+  // })
+
+  // console.log('user', getUser)
 
   return (
     <div className="max-h-screen min-h-screen flex items-center justify-center px-4 py-12">

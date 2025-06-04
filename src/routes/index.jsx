@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import AppRoutes from "./AppRoutes";
+import RequireAuth from "./RequireAuth";
 
 const renderRoute = (route) => {
   const { requireAuth, isLazy, props } = route;
@@ -8,9 +9,9 @@ const renderRoute = (route) => {
   };
   const Component = route.Component;
   const routeElement = requireAuth ? (
-    <p>
-      You need to be logged in to access this page. <br />
-    </p>
+    <RequireAuth>
+      <Component {...props} />
+    </RequireAuth>
   ) : (
     <Component {...props} />
   );

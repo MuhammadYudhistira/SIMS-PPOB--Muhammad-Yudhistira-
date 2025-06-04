@@ -1,5 +1,5 @@
-import Homepage from "../pages/HomePage";
-import LoginPage from "../pages/LoginPage";
+import Homepage from "../modules/Homepage";
+import LoginPage from "../modules/auth/LoginPage";
 import MainLayout from "../ui/layouts/MainLayout";
 
 
