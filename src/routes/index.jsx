@@ -1,9 +1,17 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import AppRoutes from "./AppRoutes";
 import RequireAuth from "./RequireAuth";
 
 const renderRoute = (route) => {
-  const { requireAuth, isLazy, props } = route;
+  const { requireAuth, isLazy, props, path } = route;
+
+
+  const token = localStorage.getItem("token");
+
+  if (path === "/login" && token) {
+    return <Route key="login-redirect" path="/login" element={<Navigate to="/" replace />} />;
+  }
+
   const renderRoutes = (routes) => {
     return routes ? routes.map(renderRoute) : null;
   };
