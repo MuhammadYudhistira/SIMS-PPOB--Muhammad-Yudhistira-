@@ -7,7 +7,7 @@ export const profileSlice = createSlice({
     first_name: '',
     last_name: '',
     profile_image: '',
-    balance: 0
+    balance: 0,
   },
   reducers: {
     setProfile: (state, action) => {
@@ -16,6 +16,8 @@ export const profileSlice = createSlice({
       state.first_name = first_name || '';
       state.last_name = last_name || '';
       state.profile_image = profile_image || '';
+    },
+    updateBalance: (state, action) => {
       state.balance = action.payload.balance || 0;
     },
     clearProfile: (state) => {
@@ -27,7 +29,8 @@ export const profileSlice = createSlice({
   },
 });
 
-export const { setProfile, clearProfile } = profileSlice.actions;
+export const { setProfile, clearProfile, updateBalance } = profileSlice.actions;
 export default profileSlice;
 
 export const getProfile = (state) => state.profile;
+export const loadUserBalance = (state) => state.profile.balance;

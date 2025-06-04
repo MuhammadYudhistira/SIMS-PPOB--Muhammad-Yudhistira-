@@ -13,3 +13,15 @@ export const getBalance = async () => {
     handleApiError(error, 'failed to fetch balance');
   }
 };
+
+export const topUp = async (data) => {
+  try {
+    const response = await api.post('/topup', data, {
+      headers: getTokenHeader(),
+    });
+
+    return response?.data;
+  } catch (error) {
+    handleApiError(error, 'failed to fetch balance');
+  }
+};
