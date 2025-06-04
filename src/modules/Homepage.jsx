@@ -4,14 +4,16 @@ import { useEffect } from 'react';
 import BannerCard from '../ui/BannerCard';
 import ServiceItem from '../ui/ServiceItem';
 import { getBalance } from '../services/transactions';
-import { getBanner, getServices, setInformation } from './infromation/informationSlice';
+import { getBanner, getServices, setInformation, setSelectedService } from './infromation/informationSlice';
 import { getProfile, setProfile, updateBalance } from './profile/profileSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import HeadBanner from '../ui/HeadBanner';
+import { useNavigate } from 'react-router-dom';
 
 const Homepage = () => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const banner = useSelector(getBanner);
   const services = useSelector(getServices);
   const user = useSelector(getProfile);
@@ -45,10 +47,15 @@ const Homepage = () => {
     }
   };
 
+  const handleServiceClick = (code) => {
+    dispatch(setSelectedService(code));
+    navigate(`/transactions/${code}`);
+  }
 
   useEffect(() => {
     pageData();
   }, []);
+
 
   return (
     <div className="container mx-auto px-4 py-6">
@@ -56,7 +63,13 @@ const Homepage = () => {
 
       <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-4 mt-16">
         {services.map((service, index) => (
-          <ServiceItem key={index} icon={service.service_icon} label={service.service_name} code={service.service_code} />
+          <ServiceItem
+            key={index}
+            icon={service.service_icon}
+            label={service.service_name}
+            code={service.service_code}
+            onClick={() => handleServiceClick(service.service_code)}
+          />
         ))}
       </div>
 

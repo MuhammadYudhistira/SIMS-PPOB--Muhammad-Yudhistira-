@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const ServiceItem = ({ icon, label, code }) => {
+const ServiceItem = ({ icon, label, onClick }) => {
   return (
-    <Link to={`/transactions/${code}`} className="flex flex-col items-center">
+    <div className="flex flex-col items-center" onClick={onClick}>
       <div className="size-12 flex items-center justify-center  rounded-lg mb-2">
         <img
           src={icon}
@@ -12,7 +12,7 @@ const ServiceItem = ({ icon, label, code }) => {
         />
       </div>
       <span className="text-xs text-center capitalize">{label}</span>
-    </Link>
+    </div>
   )
 }
 

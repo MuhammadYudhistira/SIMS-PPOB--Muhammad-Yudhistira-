@@ -22,6 +22,18 @@ export const topUp = async (data) => {
 
     return response?.data;
   } catch (error) {
-    handleApiError(error, 'failed to fetch balance');
+    handleApiError(error, 'failed to top up balance');
+  }
+};
+
+export const payTransaction = async (data) => {
+  try {
+    const response = await api.post('/transaction', data, {
+      headers: getTokenHeader(),
+    });
+
+    return response?.data;
+  } catch (error) {
+    handleApiError(error, 'failed to pay transaction');
   }
 };

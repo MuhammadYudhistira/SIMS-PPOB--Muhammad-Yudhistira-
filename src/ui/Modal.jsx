@@ -32,7 +32,7 @@ export default function Modal({ message, amount, type = "information", onOk, onC
             className="text-red-500 font-bold cursor-pointer"
           >
 
-            {type === "information" ? "Ya, Lanjutkan Top Up" : "OK"}
+            {type === "information" ? "Ya, Lanjutkan" : "OK"}
           </button>
           {onCancel && (
             <button
