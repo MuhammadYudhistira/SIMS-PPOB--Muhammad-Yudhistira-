@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../Navbar";
 const MainLayout = () => {
   return (
-    <main className="">
+    <main>
       <Navbar />
       <Outlet />
     </main>
