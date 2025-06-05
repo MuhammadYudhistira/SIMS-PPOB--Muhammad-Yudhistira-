@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getProfile, setProfile } from './profileSlice'
 import { updateImageProfile, updateProfile } from '../../services/profile'
 import Modal from '../../ui/Modal'
+import { useNavigate } from 'react-router-dom';
 
 const ProfilePage = () => {
 
@@ -18,6 +19,8 @@ const ProfilePage = () => {
   const [type, setType] = useState('profile');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const fileInputRef = useRef(null);
+
+  const navigate = useNavigate();
 
 
   const [formData, setFormData] = useState({
@@ -99,7 +102,8 @@ const ProfilePage = () => {
   };
 
   const handleLogout = () => {
-    if (localStorage.getItem('token')) {
+    const token = localStorage.getItem('token')
+    if (token) {
       try {
         localStorage.removeItem('token');
       } catch (error) {
@@ -111,8 +115,8 @@ const ProfilePage = () => {
       }
 
       setTimeout(() => {
-        window.location.reload();
-      }, 100);
+        navigate('/login')
+      }, 1000);
     }
   };
 
