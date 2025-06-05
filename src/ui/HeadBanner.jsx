@@ -16,11 +16,11 @@ const HeadBanner = () => {
   return (
     <div className="grid md:grid-cols-2 gap-6 mb-8">
       <div className="flex flex-col justify-center items-center md:items-start md:gap-4">
-        <div className="rounded-full mb-3 md:mb-0">
+        <div className="mb-3 md:mb-0">
           <img
             src={user?.profile_image || '/Logo.png'}
             alt="User Avatar"
-            className="object-contain size-16"
+            className="object-cover size-20 rounded-full"
           />
         </div>
         <div className="text-center md:text-left">
