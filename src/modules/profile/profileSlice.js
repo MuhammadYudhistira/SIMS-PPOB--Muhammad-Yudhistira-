@@ -12,7 +12,6 @@ export const profileSlice = createSlice({
   reducers: {
     setProfile: (state, action) => {
       const { email, first_name, last_name, profile_image } = action.payload;
-      console.log(action.payload);
       state.email = email || '';
       state.first_name = first_name || '';
       state.last_name = last_name || '';

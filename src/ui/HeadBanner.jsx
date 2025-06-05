@@ -31,7 +31,7 @@ const HeadBanner = () => {
 
       <div className=" text-white rounded-xl p-6 bg-cover" style={{ backgroundImage: `url(${bgSaldo})` }}>
         <p className="mb-2">Saldo anda</p>
-        <h3 className="text-2xl font-bold mb-8 leading-10">Rp {showBalance ? formatRupiah(balance) : '•••••••'}</h3>
+        <h3 className="text-2xl font-bold mb-8 leading-10">Rp {showBalance ? formatRupiah(balance) || 0 : '•••••••'}</h3>
         <button className="flex items-center gap-2 text-sm cursor-pointer" onClick={() => setShowBalance(!showBalance)}>
           <span>{showBalance ? "Tutup Saldo" : "Lihat Saldo"}</span>
           {showBalance ? <FaEye size={16} className="rotate-180" /> : <FaEyeSlash size={16} />}

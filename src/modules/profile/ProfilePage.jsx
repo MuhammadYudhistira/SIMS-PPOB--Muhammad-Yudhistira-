@@ -6,13 +6,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getProfile, setProfile } from './profileSlice'
 import { updateImageProfile, updateProfile } from '../../services/profile'
 import Modal from '../../ui/Modal'
-import { useNavigate } from 'react-router-dom'
 
 const ProfilePage = () => {
 
   const profile = useSelector(getProfile)
   const dispatch = useDispatch();
-  const navigate = useNavigate()
 
   const [image, setImage] = useState(profile.profile_image || '/Banner 1.png');
   const [imageFile, setImageFile] = useState(null);
@@ -101,9 +99,22 @@ const ProfilePage = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    navigate('/login');
-  }
+    if (localStorage.getItem('token')) {
+      try {
+        localStorage.removeItem('token');
+      } catch (error) {
+        setModal({
+          message: error instanceof Error ? error.message : 'something went wrong',
+          type: 'danger',
+        });
+        return;
+      }
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 100);
+    }
+  };
 
   useEffect(() => {
     if (!profile?.email) {
