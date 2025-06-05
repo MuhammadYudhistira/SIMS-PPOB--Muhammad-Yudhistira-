@@ -1,7 +1,8 @@
 import { BiMenu } from "react-icons/bi"
-import { Link } from "react-router-dom"
+import { Link, useResolvedPath } from "react-router-dom"
 
 const Navbar = () => {
+  const path = useResolvedPath().pathname
   return (
     <header className="border-b border-gray-200">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
@@ -13,9 +14,9 @@ const Navbar = () => {
         </div>
         <nav className="hidden md:block">
           <ul className="flex gap-6">
-            <Link to={"/top-up"} className="font-medium">Top Up</Link>
-            <Link to={"/transactions"} className="font-medium">Transaction</Link>
-            <Link to={"/profile"} className="font-medium">Akun</Link>
+            <Link to={"/top-up"} className={`font-medium ${path === "/top-up" && "text-red-500"}`}>Top Up</Link>
+            <Link to={"/transactions"} className={`font-medium ${path === "/transactions" && "text-red-500"}`}>Transaction</Link>
+            <Link to={"/profile"} className={`font-medium ${path === "/profile" && "text-red-500"}`}>Akun</Link>
           </ul>
         </nav>
 

@@ -44,6 +44,10 @@ const Homepage = () => {
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Terjadi kesalahan';
       console.error({ message, type: 'danger' });
+      if (error.message === "Token tidak tidak valid atau kadaluwarsa") {
+        localStorage.removeItem('token');
+        navigate('/login');
+      }
     }
   };
 

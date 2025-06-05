@@ -37,3 +37,18 @@ export const payTransaction = async (data) => {
     handleApiError(error, 'failed to pay transaction');
   }
 };
+
+export const getTransactionHistory = async (offset = 0, limit = 5) => {
+  try {
+    const response = await api.get(
+      `/transaction/history?limit=${limit}&offset=${offset}`,
+      {
+        headers: getTokenHeader(),
+      }
+    );
+
+    return response?.data;
+  } catch (error) {
+    handleApiError(error, 'failed to fetch transaction history');
+  }
+};
