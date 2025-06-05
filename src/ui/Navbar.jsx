@@ -42,7 +42,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        <>
+        <div className="md:hidden">
           <div
             className={`fixed top-0 left-0 mx-auto flex h-[100vh] w-full items-center justify-between bg-black/50 px-4 ${isOpen ? "z-50 overflow-hidden opacity-100" : "-z-1 opacity-0"
               }`}
@@ -71,7 +71,7 @@ const Navbar = () => {
               ))}
             </div>
           </aside>
-        </>
+        </div>
       </div>
     </header >
   )

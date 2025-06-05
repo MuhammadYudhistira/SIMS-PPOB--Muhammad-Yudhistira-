@@ -9,3 +9,10 @@
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* WebKit */
 }
+
+:root,
+#root {
+  padding: 0;
+  margin: 0;
+  max-width: 100%;
+}
